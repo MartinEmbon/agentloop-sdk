@@ -1,5 +1,5 @@
 """
-agentloop-anthropic — drop-in Anthropic SDK wrapper for AgentLoop.
+agentloop-py-anthropic — drop-in Anthropic SDK wrapper for AgentLoop.
 
     from anthropic import Anthropic
     from agentloop import AgentLoop

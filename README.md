@@ -18,19 +18,19 @@ This is a monorepo containing six SDK packages — three for JavaScript/TypeScri
 
 | Package | npm | Description |
 |---|---|---|
-| [`@agentloop-sdk/core`](./js/sdk) | `npm install @agentloop-sdk/core` | Core SDK — `search()`, `logTurn()`, `annotate()`, `feedbackUrl()` |
-| [`@agentloop-sdk/openai`](./js/openai) | `npm install @agentloop-sdk/openai openai` | Drop-in OpenAI SDK wrapper |
-| [`@agentloop-sdk/anthropic`](./js/anthropic) | `npm install @agentloop-sdk/anthropic @anthropic-ai/sdk` | Drop-in Anthropic SDK wrapper |
+| [`@agentloop-py/core`](./js/sdk) | `npm install @agentloop-py/core` | Core SDK — `search()`, `logTurn()`, `annotate()`, `feedbackUrl()` |
+| [`@agentloop-py/openai`](./js/openai) | `npm install @agentloop-py/openai openai` | Drop-in OpenAI SDK wrapper |
+| [`@agentloop-py/anthropic`](./js/anthropic) | `npm install @agentloop-py/anthropic @anthropic-ai/sdk` | Drop-in Anthropic SDK wrapper |
 
 ### Python
 
 | Package | pip | Description |
 |---|---|---|
-| [`agentloop-sdk`](./py/sdk) | `pip install agentloop-sdk` | Core SDK, sync + async |
-| [`agentloop-openai`](./py/openai) | `pip install agentloop-openai openai` | Drop-in OpenAI SDK wrapper |
-| [`agentloop-anthropic`](./py/anthropic) | `pip install agentloop-anthropic anthropic` | Drop-in Anthropic SDK wrapper |
+| [`agentloop-py`](./py/sdk) | `pip install agentloop-py` | Core SDK, sync + async |
+| [`agentloop-py-openai`](./py/openai) | `pip install agentloop-py-openai openai` | Drop-in OpenAI SDK wrapper |
+| [`agentloop-py-anthropic`](./py/anthropic) | `pip install agentloop-py-anthropic anthropic` | Drop-in Anthropic SDK wrapper |
 
-> **Note on the Python install name:** the install command is `pip install agentloop-sdk`, but the import is `from agentloop import AgentLoop` (the module name is `agentloop`, kept consistent with the JS SDK). This is a common pattern in Python — `pip install beautifulsoup4` then `from bs4 import ...`, etc.
+> **Note on the Python install name:** the install command is `pip install agentloop-py`, but the import is `from agentloop import AgentLoop` (the module name is `agentloop`, kept consistent with the JS SDK). This is a common pattern in Python — `pip install beautifulsoup4` then `from bs4 import ...`, etc.
 
 ---
 
@@ -38,8 +38,8 @@ This is a monorepo containing six SDK packages — three for JavaScript/TypeScri
 
 ```ts
 import OpenAI from "openai";
-import { AgentLoop } from "@agentloop-sdk/core";
-import { wrapOpenAI } from "@agentloop-sdk/openai";
+import { AgentLoop } from "@agentloop-py/core";
+import { wrapOpenAI } from "@agentloop-py/openai";
 
 const openai = wrapOpenAI(
   new OpenAI(),
@@ -98,15 +98,15 @@ Both languages hit the same backend, so deduplication, memory search, and the re
 ## Repository layout
 
 ```
-agentloop-sdk/
+agentloop-py/
 ├── js/
-│   ├── sdk/        → @agentloop-sdk/core
-│   ├── openai/     → @agentloop-sdk/openai
-│   └── anthropic/  → @agentloop-sdk/anthropic
+│   ├── sdk/        → @agentloop-py/core
+│   ├── openai/     → @agentloop-py/openai
+│   └── anthropic/  → @agentloop-py/anthropic
 ├── py/
-│   ├── sdk/        → agentloop-sdk
-│   ├── openai/     → agentloop-openai
-│   └── anthropic/  → agentloop-anthropic
+│   ├── sdk/        → agentloop-py
+│   ├── openai/     → agentloop-py-openai
+│   └── anthropic/  → agentloop-py-anthropic
 ├── CHANGES.md      ← release notes + publishing instructions
 ├── LICENSE         ← MIT
 └── README.md       ← you are here

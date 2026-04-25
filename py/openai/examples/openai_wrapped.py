@@ -1,13 +1,13 @@
 """
 Example: wrap an OpenAI client with AgentLoop. Zero setup.
 
-Compare with ../agentloop-sdk-py/examples/openai_manual.py to see the
+Compare with ../agentloop-py-py/examples/openai_manual.py to see the
 difference — the wrapper handles retrieval, injection, and logging
 automatically. All you do is pass `agentloop={...}` for per-call
 overrides.
 
 Run:
-    pip install agentloop-sdk agentloop-openai openai
+    pip install agentloop-py agentloop-py-openai openai
     export OPENAI_API_KEY=sk-...
     export AGENTLOOP_API_KEY=ak_...
     python examples/openai_wrapped.py "what's the pix limit at night?"

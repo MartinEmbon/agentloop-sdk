@@ -12,17 +12,17 @@ URL fixes, repo organization, and registry publishing.
 
 ### Renames
 
-**Python core package:** `agentloop` → `agentloop-sdk` on PyPI
+**Python core package:** `agentloop` → `agentloop-py` on PyPI
 
 The PyPI name `agentloop` is taken by an unrelated 2021 package (a
 small "agent loop control" library, very few downloads). Rather than
 attempt a transfer or pick a different name, we renamed the install
-target to `agentloop-sdk`. The Python module name stays `agentloop`,
+target to `agentloop-py`. The Python module name stays `agentloop`,
 matching the JS SDK convention.
 
 ```diff
 - pip install agentloop
-+ pip install agentloop-sdk
++ pip install agentloop-py
 
   from agentloop import AgentLoop    # unchanged
 ```
@@ -35,21 +35,21 @@ match, and many established packages use this convention.
 
 | Package | Version before | Version after |
 |---|---|---|
-| `@agentloop-sdk/core` | 0.1.1 | 0.1.1 (no change) |
-| `@agentloop-sdk/openai` | 0.1.0 | 0.1.0 (no change) |
-| `@agentloop-sdk/anthropic` | 0.1.0 | 0.1.0 (no change) |
-| `agentloop-sdk` (Python core) | 0.1.1 (was `agentloop`) | **0.1.2** |
-| `agentloop-openai` (Python) | 0.1.0 | **0.1.1** |
-| `agentloop-anthropic` (Python) | 0.1.0 | **0.1.1** |
+| `@agentloop-py/core` | 0.1.1 | 0.1.1 (no change) |
+| `@agentloop-py/openai` | 0.1.0 | 0.1.0 (no change) |
+| `@agentloop-py/anthropic` | 0.1.0 | 0.1.0 (no change) |
+| `agentloop-py` (Python core) | 0.1.1 (was `agentloop`) | **0.1.2** |
+| `agentloop-py-openai` (Python) | 0.1.0 | **0.1.1** |
+| `agentloop-py-anthropic` (Python) | 0.1.0 | **0.1.1** |
 
 JS packages unchanged. Only the three Python packages bumped — core
 got `0.1.2` to mark the rename, and the two wrappers got `0.1.1`
-because their `dependencies` array now references `agentloop-sdk>=0.1.2`
+because their `dependencies` array now references `agentloop-py>=0.1.2`
 instead of the old `agentloop>=0.1.0`.
 
 ### Repository URLs
 
-All six packages now point at `https://github.com/martinembon/agentloop-sdk`
+All six packages now point at `https://github.com/martinembon/agentloop-py`
 (replacing placeholder URLs like `github.com/agentloop/sdk-py` and
 `agentloop.dev`). When customers click through from npm or PyPI to
 the source, they land in the right place.
@@ -63,13 +63,13 @@ round14c-delivery/                   ← the deliverable
 ├── .gitignore                       ← node, python, IDE, OS junk
 ├── CHANGES.md                       ← this file
 ├── js/
-│   ├── sdk/                         → @agentloop-sdk/core
-│   ├── openai/                      → @agentloop-sdk/openai
-│   └── anthropic/                   → @agentloop-sdk/anthropic
+│   ├── sdk/                         → @agentloop-py/core
+│   ├── openai/                      → @agentloop-py/openai
+│   └── anthropic/                   → @agentloop-py/anthropic
 └── py/
-    ├── sdk/                         → agentloop-sdk
-    ├── openai/                      → agentloop-openai
-    └── anthropic/                   → agentloop-anthropic
+    ├── sdk/                         → agentloop-py
+    ├── openai/                      → agentloop-py-openai
+    └── anthropic/                   → agentloop-py-anthropic
 ```
 
 One repo, six packages. Convention used by Vercel SDK, Anthropic's
@@ -82,12 +82,12 @@ All 84 tests still pass after renames + URL updates:
 
 | Package | Tests |
 |---|---|
-| `@agentloop-sdk/core` | 16 |
-| `@agentloop-sdk/openai` | 12 |
-| `@agentloop-sdk/anthropic` | 8 |
-| `agentloop-sdk` | 27 |
-| `agentloop-openai` | 12 |
-| `agentloop-anthropic` | 9 |
+| `@agentloop-py/core` | 16 |
+| `@agentloop-py/openai` | 12 |
+| `@agentloop-py/anthropic` | 8 |
+| `agentloop-py` | 27 |
+| `agentloop-py-openai` | 12 |
+| `agentloop-py-anthropic` | 9 |
 | **Total** | **84** |
 
 ---
@@ -103,7 +103,7 @@ This is the operational part. Three phases: GitHub, npm, PyPI.
 2. Click "New repository" (top-right `+` menu).
 3. Settings:
    - **Owner**: `martinembon`
-   - **Repository name**: `agentloop-sdk`
+   - **Repository name**: `agentloop-py`
    - **Public** (must be public for npm/PyPI users to read source)
    - **Do NOT initialize with README, .gitignore, or LICENSE** — we have them already
 4. Click "Create repository". You'll see an empty repo with setup instructions.
@@ -116,7 +116,7 @@ This is the operational part. Three phases: GitHub, npm, PyPI.
    git add .
    git commit -m "Initial commit — six SDK packages"
    git branch -M main
-   git remote add origin https://github.com/martinembon/agentloop-sdk.git
+   git remote add origin https://github.com/martinembon/agentloop-py.git
    git push -u origin main
    ```
 
@@ -126,7 +126,7 @@ This is the operational part. Three phases: GitHub, npm, PyPI.
    Generate new token, with `repo` scope), or set up GitHub CLI (`gh
    auth login`).
 
-6. Verify in your browser: https://github.com/martinembon/agentloop-sdk
+6. Verify in your browser: https://github.com/martinembon/agentloop-py
    should now show all the files. Check that the README renders nicely
    on the homepage.
 
@@ -142,8 +142,8 @@ This is the operational part. Three phases: GitHub, npm, PyPI.
 
 **Publishing the JS packages — order matters:**
 
-The wrappers (`@agentloop-sdk/openai`, `@agentloop-sdk/anthropic`) declare
-`@agentloop-sdk/core` as a peer dependency. They'll work even if the SDK
+The wrappers (`@agentloop-py/openai`, `@agentloop-py/anthropic`) declare
+`@agentloop-py/core` as a peer dependency. They'll work even if the SDK
 isn't on npm yet (peer deps are resolved at install time, not publish
 time), but it's cleaner to publish core first.
 
@@ -157,7 +157,7 @@ npm publish --access public           # --access public is REQUIRED for scoped p
 ```
 
 > **Critical**: `--access public`. Without this flag, npm tries to publish
-> scoped packages (`@agentloop-sdk/...`) as private, which requires a paid
+> scoped packages (`@agentloop-py/...`) as private, which requires a paid
 > npm account. With it, anyone can install for free.
 
 ```powershell
@@ -178,13 +178,13 @@ npm publish --access public
 
 After each `npm publish`, you should see output like:
 ```
-+ @agentloop-sdk/core@0.1.1
++ @agentloop-py/core@0.1.1
 ```
 
 Then visit:
-- https://www.npmjs.com/package/@agentloop-sdk/core
-- https://www.npmjs.com/package/@agentloop-sdk/openai
-- https://www.npmjs.com/package/@agentloop-sdk/anthropic
+- https://www.npmjs.com/package/@agentloop-py/core
+- https://www.npmjs.com/package/@agentloop-py/openai
+- https://www.npmjs.com/package/@agentloop-py/anthropic
 
 Each should now show your package, the README, and the install command.
 
@@ -195,8 +195,8 @@ cd C:\temp
 mkdir npm-smoke-test
 cd npm-smoke-test
 npm init -y
-npm install @agentloop-sdk/core @agentloop-sdk/openai openai
-node -e "const { AgentLoop } = require('@agentloop-sdk/core'); console.log('imported:', AgentLoop.name);"
+npm install @agentloop-py/core @agentloop-py/openai openai
+node -e "const { AgentLoop } = require('@agentloop-py/core'); console.log('imported:', AgentLoop.name);"
 # Should print: imported: AgentLoop
 ```
 
@@ -236,7 +236,7 @@ You'll see output:
 ```
 Uploading agentloop_sdk-0.1.2-py3-none-any.whl
 100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.3/12.3 kB
-View at: https://pypi.org/project/agentloop-sdk/0.1.2/
+View at: https://pypi.org/project/agentloop-py/0.1.2/
 ```
 
 ```powershell
@@ -252,9 +252,9 @@ python -m twine upload dist/*
 ```
 
 Then visit:
-- https://pypi.org/project/agentloop-sdk/
-- https://pypi.org/project/agentloop-openai/
-- https://pypi.org/project/agentloop-anthropic/
+- https://pypi.org/project/agentloop-py/
+- https://pypi.org/project/agentloop-py-openai/
+- https://pypi.org/project/agentloop-py-anthropic/
 
 **Smoke test the published packages:**
 
@@ -264,7 +264,7 @@ mkdir pypi-smoke-test
 cd pypi-smoke-test
 python -m venv .venv
 .venv\Scripts\Activate.ps1
-pip install agentloop-sdk agentloop-openai openai
+pip install agentloop-py agentloop-py-openai openai
 python -c "from agentloop import AgentLoop; print('imported:', AgentLoop.__name__)"
 # Should print: imported: AgentLoop
 ```
@@ -276,8 +276,8 @@ python -c "from agentloop import AgentLoop; print('imported:', AgentLoop.__name_
 ### Order matters
 
 Always publish **core first**, then wrappers:
-- npm: `@agentloop-sdk/core` → `@agentloop-sdk/openai` → `@agentloop-sdk/anthropic`
-- PyPI: `agentloop-sdk` → `agentloop-openai` → `agentloop-anthropic`
+- npm: `@agentloop-py/core` → `@agentloop-py/openai` → `@agentloop-py/anthropic`
+- PyPI: `agentloop-py` → `agentloop-py-openai` → `agentloop-py-anthropic`
 
 Wrappers list core as a dependency. If you publish a wrapper first, the
 metadata is valid but anyone trying to install gets a "core not found"
@@ -285,7 +285,7 @@ error until you publish core too.
 
 ### Versions are immutable
 
-Once you publish `@agentloop-sdk/core@0.1.1` to npm or `agentloop-sdk==0.1.2`
+Once you publish `@agentloop-py/core@0.1.1` to npm or `agentloop-py==0.1.2`
 to PyPI, you cannot edit or republish that exact version. To fix
 something, bump to `0.1.3` and republish.
 
@@ -341,20 +341,20 @@ catches dependency-resolution issues that local installs wouldn't.
 Cross off as you go.
 
 - [ ] Phase 1 — GitHub
-  - [ ] Create `martinembon/agentloop-sdk` repo (public, no init files)
+  - [ ] Create `martinembon/agentloop-py` repo (public, no init files)
   - [ ] `git init / add / commit / push` from delivery folder
   - [ ] Verify README renders on github.com homepage
 - [ ] Phase 2 — npm
   - [ ] `npm login` with 2FA enabled
-  - [ ] Publish `@agentloop-sdk/core` (`--access public`)
-  - [ ] Publish `@agentloop-sdk/openai`
-  - [ ] Publish `@agentloop-sdk/anthropic`
+  - [ ] Publish `@agentloop-py/core` (`--access public`)
+  - [ ] Publish `@agentloop-py/openai`
+  - [ ] Publish `@agentloop-py/anthropic`
   - [ ] Smoke test fresh install
 - [ ] Phase 3 — PyPI
   - [ ] PyPI account with 2FA + API token configured in `.pypirc`
-  - [ ] `python -m build && twine upload` for `agentloop-sdk`
-  - [ ] Same for `agentloop-openai`
-  - [ ] Same for `agentloop-anthropic`
+  - [ ] `python -m build && twine upload` for `agentloop-py`
+  - [ ] Same for `agentloop-py-openai`
+  - [ ] Same for `agentloop-py-anthropic`
   - [ ] Smoke test fresh venv install
 
 When all 12 boxes are ticked, the SDKs are live and anyone in the

@@ -1,5 +1,5 @@
 """
-agentloop-openai — drop-in OpenAI SDK wrapper for AgentLoop.
+agentloop-py-openai — drop-in OpenAI SDK wrapper for AgentLoop.
 
     from openai import OpenAI
     from agentloop import AgentLoop

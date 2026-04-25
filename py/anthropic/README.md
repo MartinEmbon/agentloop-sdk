@@ -1,4 +1,4 @@
-# agentloop-anthropic
+# agentloop-py-anthropic
 
 Drop-in wrapper that adds [AgentLoop](https://agentloop.dev) memory
 retrieval and turn logging to every `anthropic.messages.create` call.
@@ -37,7 +37,7 @@ If either AgentLoop call fails, your Anthropic call still succeeds.
 ## Install
 
 ```bash
-pip install agentloop-sdk agentloop-anthropic anthropic
+pip install agentloop-py agentloop-py-anthropic anthropic
 ```
 
 ## Per-call options
@@ -103,7 +103,7 @@ client stays unwrapped and usable.
 
 ## Streaming
 
-**Not supported in v0.1.** Same note as `agentloop-openai` — planned
+**Not supported in v0.1.** Same note as `agentloop-py-openai` — planned
 for a later release.
 
 ## License

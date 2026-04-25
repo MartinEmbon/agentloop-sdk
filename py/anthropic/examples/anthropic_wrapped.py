@@ -2,7 +2,7 @@
 Example: wrap an Anthropic client with AgentLoop. Zero setup.
 
 Run:
-    pip install agentloop-sdk agentloop-anthropic anthropic
+    pip install agentloop-py agentloop-py-anthropic anthropic
     export ANTHROPIC_API_KEY=sk-ant-...
     export AGENTLOOP_API_KEY=ak_...
     python examples/anthropic_wrapped.py "what's the pix limit at night?"

@@ -1,4 +1,4 @@
-# agentloop-openai
+# agentloop-py-openai
 
 Drop-in wrapper that adds [AgentLoop](https://agentloop.dev) memory
 retrieval and turn logging to every `openai.chat.completions.create`
@@ -39,7 +39,7 @@ If either AgentLoop call fails, your OpenAI call still succeeds.
 ## Install
 
 ```bash
-pip install agentloop-sdk agentloop-openai openai
+pip install agentloop-py agentloop-py-openai openai
 ```
 
 ## Per-call options

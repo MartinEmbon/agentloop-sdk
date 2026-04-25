@@ -11,7 +11,7 @@ turns human corrections into searchable memory for your agent.
 ## Install
 
 ```bash
-pip install agentloop-sdk
+pip install agentloop-py
 ```
 
 ## Quick start (sync)
@@ -51,8 +51,8 @@ def ask(question: str, user_id: str) -> str:
 ```
 
 That's the whole integration — one call before the LLM, one after. For
-a zero-setup drop-in wrapper, install `agentloop-openai` or
-`agentloop-anthropic` instead.
+a zero-setup drop-in wrapper, install `agentloop-py-openai` or
+`agentloop-py-anthropic` instead.
 
 ## Quick start (async)
 

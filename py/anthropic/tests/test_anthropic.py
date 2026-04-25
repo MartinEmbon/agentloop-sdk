@@ -1,5 +1,5 @@
 """
-Tests for agentloop-anthropic.
+Tests for agentloop-py-anthropic.
 
 Fake Anthropic client + respx for the AgentLoop backend.
 """

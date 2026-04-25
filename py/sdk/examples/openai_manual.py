@@ -2,10 +2,10 @@
 Example: manual AgentLoop integration with OpenAI.
 
 This is the low-level pattern — call loop.search() before, loop.log_turn()
-after. For a zero-setup drop-in, use agentloop-openai instead.
+after. For a zero-setup drop-in, use agentloop-py-openai instead.
 
 Run:
-    pip install agentloop-sdk openai
+    pip install agentloop-py openai
     export OPENAI_API_KEY=sk-...
     export AGENTLOOP_API_KEY=ak_...
     python examples/openai_manual.py "what's the pix limit at night?"

@@ -1,5 +1,5 @@
 """
-Tests for agentloop-openai.
+Tests for agentloop-py-openai.
 
 Uses a fake OpenAI client + respx for the AgentLoop backend. No real
 network, no real OpenAI.
