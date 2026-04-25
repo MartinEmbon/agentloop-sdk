@@ -1,0 +1,59 @@
+{
+  "name": "@agentloop-sdk/core",
+  "version": "0.1.1",
+  "description": "JavaScript / TypeScript SDK for AgentLoop — middleware that turns human corrections into searchable memory for your agent.",
+  "license": "MIT",
+  "author": "AgentLoop",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martinembon/agentloop-sdk"
+  },
+  "keywords": [
+    "llm",
+    "agents",
+    "openai",
+    "anthropic",
+    "feedback",
+    "evaluation",
+    "corrections",
+    "memory",
+    "rag"
+  ],
+  "type": "module",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/types/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json && node scripts/rename-cjs.mjs",
+    "build:types": "tsc -p tsconfig.types.json && node scripts/dual-types.mjs",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:types",
+    "test": "node --test test/*.test.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0"
+  }
+}
