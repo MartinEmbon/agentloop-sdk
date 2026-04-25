@@ -1,6 +1,6 @@
 {
   "name": "@agentloop-sdk/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "JavaScript / TypeScript SDK for AgentLoop — middleware that turns human corrections into searchable memory for your agent.",
   "license": "MIT",
   "author": "AgentLoop",

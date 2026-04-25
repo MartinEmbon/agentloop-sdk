@@ -47,4 +47,13 @@ for (const file of jsFiles) {
   await rename(file, target);
 }
 
+// Third pass: drop a package.json in dist/cjs/ telling Node "this folder
+// contains CommonJS." Belt-and-suspenders alongside the .cjs extension —
+// protects against any future tsc emit-format regression.
+await writeFile(
+  join(CJS_DIR, "package.json"),
+  JSON.stringify({ type: "commonjs" }, null, 2),
+  "utf8",
+);
+
 console.log(`Renamed ${jsFiles.length} .js → .cjs in dist/cjs/`);

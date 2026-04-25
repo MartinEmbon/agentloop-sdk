@@ -1,6 +1,6 @@
 {
   "name": "@agentloop-sdk/openai",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Drop-in OpenAI SDK wrapper for AgentLoop. Adds memory retrieval and turn logging to every chat.completions.create call.",
   "license": "MIT",
   "author": "AgentLoop",
@@ -53,8 +53,8 @@
     "node": ">=18"
   },
   "peerDependencies": {
-    "@agentloop-sdk/core": "^0.1.0",
-    "openai": "^4.0.0 || ^5.0.0"
+    "@agentloop-sdk/core": "^0.1.2",
+    "openai": "^4.0.0 || ^5.0.0 || ^6.0.0"
   },
   "devDependencies": {
     "@agentloop-sdk/core": "file:../sdk",

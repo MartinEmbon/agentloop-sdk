@@ -1,6 +1,6 @@
 {
   "name": "@agentloop-sdk/anthropic",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Drop-in Anthropic SDK wrapper for AgentLoop. Adds memory retrieval and turn logging to every messages.create call.",
   "license": "MIT",
   "author": "AgentLoop",
@@ -53,7 +53,7 @@
     "node": ">=18"
   },
   "peerDependencies": {
-    "@agentloop-sdk/core": "^0.1.0",
+    "@agentloop-sdk/core": "^0.1.2",
     "@anthropic-ai/sdk": "^0.30.0 || ^0.40.0 || ^0.50.0"
   },
   "devDependencies": {
